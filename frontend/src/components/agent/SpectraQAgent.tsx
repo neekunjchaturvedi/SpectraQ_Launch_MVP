@@ -18,7 +18,7 @@ import {
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/outline";
 import { useAccount } from "wagmi";
-import logo from "../../../public/logo.png";
+import logo from "@/assets/logo.png";
 
 const LaunchingSoonBanner = () => {
   const [timeLeft, setTimeLeft] = useState({
