@@ -28,7 +28,7 @@ import {
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
-import logo from "/logo.png";
+import logo from "../../public/logo.png";
 
 // Mock data for demonstration - coming soon markets
 const upcomingMarkets = [

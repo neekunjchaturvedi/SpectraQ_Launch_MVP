@@ -18,6 +18,7 @@ import {
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/outline";
 import { useAccount } from "wagmi";
+import logo from "../../../public/logo.png";
 
 const LaunchingSoonBanner = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -136,7 +137,7 @@ const ComingSoonMessage = ({
 
   const content = {
     welcome: {
-      avatar: "/logo-colored.svg",
+      avatar: { logo },
       name: "SpectraQAgent",
       message:
         "Hello! I'm SpectraQAgent, your AI-powered crypto market analyst. I'm currently in development and will soon be able to provide real-time market insights, predictions, and analysis.",
@@ -328,11 +329,7 @@ export function SpectraQAgent() {
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
             <div className="mb-6">
               <div className="w-16 h-16 mx-auto mb-4 avatar-centered relative">
-                <img
-                  src="/logo.png"
-                  alt="SpectraQ Agent"
-                  className="w-16 h-16"
-                />
+                <img src={logo} alt="SpectraQ Agent" className="w-16 h-16" />
                 <CogIcon className="w-6 h-6 text-secondary animate-spin absolute -top-1 -right-1" />
               </div>
               <h2 className="text-2xl font-bold mb-2">
