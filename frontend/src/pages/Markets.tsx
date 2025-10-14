@@ -65,7 +65,7 @@ const LaunchingSoonBanner = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const launchDate = new Date("2025-11-15T00:00:00Z").getTime();
+      const launchDate = new Date("2025-11-30T00:00:00Z").getTime();
       const now = new Date().getTime();
       const difference = launchDate - now;
 

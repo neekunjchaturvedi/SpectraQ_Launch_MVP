@@ -28,60 +28,62 @@ import {
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpg";
 
 // Mock data for demonstration - coming soon markets
 const upcomingMarkets = [
   {
     id: "1",
-    title: "Will Bitcoin reach $100,000 by end of 2025?",
+    title: "Will AVAX Reach $40 By End Of Nov 2025?",
     description:
-      "Market prediction for Bitcoin price reaching six-figure milestone by December 31, 2025.",
+      "Prediction market for Avalanche (AVAX) price reaching $40 by November 31, 2025.",
     category: "Crypto",
-    endDate: "2025-12-31",
-    volume: "--",
-    participants: 0,
-    yesPrice: 0.65,
-    noPrice: 0.35,
+    endDate: "2025-10-31T23:59:00",
+    volume: "$383.7K",
+    participants: 5,
+    yesPrice: 0.6,
+    noPrice: 0.4,
     status: "upcoming" as const,
   },
   {
     id: "2",
-    title: "Will the 2025 US Election results be decisive?",
+    title:
+      "$ARENA Will Be The Third Coin To Hit $100M Market Cap On Avalanche?",
     description:
-      "Prediction market for clear election outcome without major disputes.",
-    category: "Politics",
-    endDate: "2025-11-06",
-    volume: "--",
-    participants: 0,
-    yesPrice: 0.72,
-    noPrice: 0.28,
+      "Prediction market for $ARENA reaching $100M market cap on the Avalanche network by December 31, 2025.",
+    category: "Crypto",
+    endDate: "2025-12-31T23:59:00",
+    volume: "$63.8K",
+    participants: 2,
+    yesPrice: 0.69,
+    noPrice: 0.31,
     status: "upcoming" as const,
   },
   {
     id: "3",
-    title: "Will Fed cut rates by 25bp in November?",
+    title: "Will ETH Cross $5000 In 2025?",
     description:
-      "Federal Reserve interest rate prediction for November FOMC meeting.",
-    category: "Economics",
-    endDate: "2025-11-07",
-    volume: "--",
+      "Prediction market for Ethereum (ETH) surpassing $5000 by the end of 2025.",
+    category: "Crypto",
+    endDate: "2025-12-31T20:32:00",
+    volume: "$24.4K",
     participants: 0,
-    yesPrice: 0.58,
-    noPrice: 0.42,
+    yesPrice: 0.5,
+    noPrice: 0.5,
     status: "upcoming" as const,
   },
   {
     id: "4",
-    title: "Will Ethereum hit $3,500 before year-end?",
+    title:
+      "Will TikTok Be Acquired By Larry Ellison/Oracle By December 31, 2026?",
     description:
-      "Ethereum price prediction for reaching $3,500 by December 31, 2025.",
-    category: "Crypto",
-    endDate: "2025-12-31",
-    volume: "--",
+      "Prediction market for the acquisition of TikTok by Oracle (Larry Ellison) by the end of 2026.",
+    category: "Tech",
+    endDate: "2026-02-20T20:48:00",
+    volume: "$20.3K",
     participants: 0,
-    yesPrice: 0.45,
-    noPrice: 0.55,
+    yesPrice: 0.48,
+    noPrice: 0.52,
     status: "upcoming" as const,
   },
 ];
@@ -89,7 +91,7 @@ const upcomingMarkets = [
 const mvpStats = [
   {
     name: "Launch Date",
-    value: "Oct 31",
+    value: "Nov 31",
     icon: RocketLaunchIcon,
     change: "2025",
   },
@@ -177,7 +179,7 @@ const CountdownTimer = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const launchDate = new Date("2025-10-31T00:00:00Z").getTime();
+      const launchDate = new Date("2025-11-30T00:00:00Z").getTime();
       const now = new Date().getTime();
       const difference = launchDate - now;
 
@@ -281,7 +283,7 @@ const Index = () => {
           <div className="flex items-center justify-center space-x-3 text-center">
             <RocketLaunchIcon className="w-5 h-5 text-primary" />
             <span className="font-medium text-foreground">
-              SpectraQ MVP launching October 31st, 2025!
+              SpectraQ MVP launching November 30th, 2025!
             </span>
             <Badge className="bg-primary text-primary-foreground">
               {daysUntilLaunch} days left
@@ -299,7 +301,7 @@ const Index = () => {
             <div className="lg:w-1/2 text-left lg:pr-8">
               <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary mb-6">
                 <CalendarIcon className="w-4 h-4 mr-2" />
-                Launching October 31, 2025
+                Launching November 31, 2025
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
                 The Future of{" "}
@@ -307,8 +309,8 @@ const Index = () => {
                 Here
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
-                Join us for the MVP launch of SpectraQ - where you can trade on
-                real-world events and earn from your predictions.
+                SpectraQ - where you can trade on real-world events and earn
+                from your predictions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button
@@ -317,7 +319,7 @@ const Index = () => {
                   disabled
                 >
                   <span className="relative z-10 flex items-center">
-                    Coming October 31st
+                    Launching Soon
                     <RocketLaunchIcon className="w-5 h-5 ml-2" />
                   </span>
                 </Button>
@@ -374,7 +376,7 @@ const Index = () => {
                         Preview Market
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        Will Bitcoin reach $100K in 2025?
+                        Will Avax reach $40 in 2025?
                       </p>
                     </div>
                     <Badge className="bg-orange-500/20 text-orange-600">
@@ -407,20 +409,20 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-6">
+                  {/* <div className="flex items-center justify-between text-sm text-muted-foreground mb-6">
                     <div className="flex items-center space-x-1">
                       <ClockIcon className="w-4 h-4" />
-                      <span>Available Oct 31st</span>
+                      <span>Available Nov 30th</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <RocketLaunchIcon className="w-4 h-4" />
                       <span>MVP Launch</span>
                     </div>
-                  </div>
+                  </div> */}
 
                   <Button className="w-full" disabled>
                     <ClockIcon className="w-4 h-4 mr-2" />
-                    Available October 31st
+                    Coming Soon
                   </Button>
                 </div>
               </div>
@@ -501,7 +503,7 @@ const Index = () => {
             </div>
             <Badge className="bg-orange-500/20 text-orange-600">
               <ClockIcon className="w-4 h-4 mr-2" />
-              October 31st
+              November 30th
             </Badge>
           </div>
 
@@ -560,7 +562,7 @@ const Index = () => {
               <div className="mt-4">
                 <Badge className="bg-primary/20 text-primary">
                   <CalendarIcon className="w-3 h-3 mr-1" />
-                  MVP: Oct 31, 2025
+                  MVP: Nov 31, 2025
                 </Badge>
               </div>
             </div>

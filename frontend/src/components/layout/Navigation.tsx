@@ -12,7 +12,7 @@ import {
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpg";
 
 export function Navigation() {
   const location = useLocation();
