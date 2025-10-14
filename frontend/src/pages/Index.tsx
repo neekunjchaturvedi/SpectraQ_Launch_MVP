@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/layout/Navigation";
 import { MarketCard } from "@/components/markets/MarketCard";
 import { Button } from "@/components/ui/button";
+import Swal from "sweetalert2";
 import {
   Card,
   CardContent,
@@ -29,6 +30,7 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
 import logo from "@/assets/logo.jpg";
+import axios from "axios";
 
 // Mock data for demonstration - coming soon markets
 const upcomingMarkets = [
@@ -223,13 +225,43 @@ const CountdownTimer = () => {
 const NotifyForm = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const VITE_API_BASE_URL = import.meta.env.VITE_URL;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email submitted:", email);
-    setIsSubmitted(true);
-    setEmail("");
-    setTimeout(() => setIsSubmitted(false), 3000);
+
+    try {
+      const res = await axios.post(`${VITE_API_BASE_URL}/api/sendEmail`, {
+        email,
+      });
+
+      // ✅ Show success alert
+      Swal.fire({
+        icon: "success",
+        title: "Subscribed!",
+        text: res.data?.message || "Email added successfully!",
+        timer: 2500,
+        showConfirmButton: false,
+        theme: "dark",
+      });
+
+      console.log("Email submitted:", email);
+      setIsSubmitted(true);
+      setEmail("");
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err: any) {
+      console.log(err);
+
+      // ❌ Show error alert
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text:
+          err.response?.data?.message ||
+          "Something went wrong. Please try again later.",
+        confirmButtonColor: "#3085d6",
+      });
+    }
   };
 
   return (

@@ -19,6 +19,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const categories = [
   "All",
@@ -215,15 +217,43 @@ const NotifyMeForm = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the email to your backend
-    console.log("Email submitted:", email);
-    setIsSubmitted(true);
-    setEmail("");
+  const VITE_API_BASE_URL = import.meta.env.VITE_URL;
 
-    // Reset after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(`${VITE_API_BASE_URL}/api/sendEmail`, {
+        email,
+      });
+
+      // ✅ Show success alert
+      Swal.fire({
+        icon: "success",
+        title: "Subscribed!",
+        text: res.data?.message || "Email added successfully!",
+        timer: 2500,
+        showConfirmButton: false,
+        theme: "dark",
+      });
+
+      console.log("Email submitted:", email);
+      setIsSubmitted(true);
+      setEmail("");
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err: any) {
+      console.log(err);
+
+      // ❌ Show error alert
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text:
+          err.response?.data?.message ||
+          "Something went wrong. Please try again later.",
+        confirmButtonColor: "#3085d6",
+      });
+    }
   };
 
   return (
