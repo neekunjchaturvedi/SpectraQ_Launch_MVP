@@ -11,7 +11,7 @@ const app = express(); // ✅ move this up
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://spectraq.org", "https://www.spectraq.org"],
+    origin: ["https://spectraq.org", "https://www.spectraq.org", "https://galade.xyz", "https://www.galade.xyz"],
     methods: ["POST"],
     allowedHeaders: ["Content-Type"],
   })
